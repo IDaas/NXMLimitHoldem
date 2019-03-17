@@ -6,7 +6,14 @@
   
     border: 10px solid dark;
     height: 90vh;
+    max-height: 90vh;
+    overflow: auto;
     background-color: whitesmoke;
+}
+
+.servers table tbody{
+    max-height: 50vh;
+    overflow:scroll;
 }
 
 body{

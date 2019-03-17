@@ -18,7 +18,7 @@
 
 
 
-	<div class="row">
+	<div class="row" id="app">
 		<!-- Chat on the left -->
 		<div class="chat-container col s2">
 			<div class="chat">
@@ -29,8 +29,8 @@
 
 				<div class="chatmessages">
 					<ul id="messages">
-						[Server] : Bienvenue sur le chat
-						
+						<!-- [Server] : Bienvenue sur le chat -->
+						<li v-for="message in messages">{{message}}</li>
 					</ul>
 				</div>
 
@@ -68,43 +68,17 @@
 				</thead>
 
 				<tbody>
-					<tr>
-						<td>10h30</td>
-						<td>MTT 1</td>
-						<td>NLHE</td>
-						<td>0 €</td>
-						<td>100 €</td>
-						<td>20</td>
-						<td>Open</td>
+					<tr v-for="server in servers">
+						<td>{{server.Start}}</td>
+						<td>{{server.Name}}</td>
+						<td>{{server.GameMode}}</td>
+						<td>{{server.Price}}</td>
+						<td>{{server.Dotation}}</td>
+						<td>{{server.Players}}</td>
+						<td>{{server.Status}}</td>
+						
 					</tr>
-					<tr>
-						<td>11h00</td>
-						<td>MTT 1</td>
-						<td>NLHE</td>
-						<td>0 €</td>
-						<td>100 €</td>
-						<td>20</td>
-						<td>Open</td>
-					</tr>
-					<tr>
-						<td>11h30</td>
-						<td>MTT 1</td>
-						<td>NLHE</td>
-						<td>0 €</td>
-						<td>100 €</td>
-						<td>20</td>
-						<td>Open</td>
-					</tr>
-					<tr>
-						<td>12h30</td>
-						<td>MTT 1</td>
-						<td>NLHE</td>
-						<td>0 €</td>
-						<td>100 €</td>
-						<td>20</td>
-						<td>Open</td>
-					</tr>
-
+					
 
 
 
@@ -152,26 +126,28 @@
 		window.$ = window.jQuery = require('jquery')
 
 	</script>
+	<!-- Load meterialieze -->
 	<script src="node_modules/materialize-css/dist/js/materialize.min.js"></script>
+	<!-- load datatables  -->
 	<script src="node_modules/datatables/media/js/jquery.dataTables.js"></script>
-	
+	<!-- load socket.io -->
 	<script src="node_modules/socket.io-client/dist/socket.io.js"></script>
-	<script src="assets/js/globalchat.js"></script>
-
 
 	<script>
+		var table
 		$(document).ready(function () {
+			
 			$('.tabs').tabs({
 				swipeable: true
 			});
 			$('textarea#msgtextarea').characterCounter();
-
-
-
-			$('table').dataTable();
 		});
 
 	</script>
+	
+	<script src="assets/js/vue.js"></script>
+	<script src="assets/js/main.js"></script>
+
 
 
 
