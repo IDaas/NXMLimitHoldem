@@ -1,17 +1,171 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>Electron boilerplate</title>
-		<link rel="stylesheet" href="index.css">
-	</head>
-	<body>
-		<div class="container">
-			<header>
-				<h1>Electron boilerplate</h1>
-			</header>
-			<section class="main"></section>
-			<footer></footer>
+
+<head>
+	<meta charset="utf-8">
+	<title>NIXMLimitHoldem</title>
+	<link rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.min.css">
+	<link rel="stylesheet" href="assets/css/app.css">
+	<link rel="stylesheet" href="node_modules/datatables/media/css/jquery.dataTables.min.css">
+
+</head>
+
+<body>
+	<header>
+
+		NIXMLimitHoldem
+	</header>
+
+
+
+	<div class="row">
+		<!-- Chat on the left -->
+		<div class="chat-container col s2">
+			
+			<div class="chat">
+
+
+				
+				<header>
+					Global Chat
+				</header>
+			</div>
+			
+
+
 		</div>
-	</body>
+		<div class="servers col s4 m8">
+
+			<header>Local Servers</header>
+
+			<table>
+				<thead>
+					<tr>
+						<th>Start</th>
+						<th>Name</th>
+						<th>Game Mode</th>
+						<th>Buy-in</th>
+						<th>Dotation</th>
+						<th>Players</th>
+						<th>Status</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<td>10h30</td>
+						<td>MTT 1</td>
+						<td>NLHE</td>
+						<td>0 €</td>
+						<td>100 €</td>
+						<td>20</td>
+						<td>Open</td>
+					</tr>
+					<tr>
+						<td>11h00</td>
+						<td>MTT 1</td>
+						<td>NLHE</td>
+						<td>0 €</td>
+						<td>100 €</td>
+						<td>20</td>
+						<td>Open</td>
+					</tr>
+					<tr>
+						<td>11h30</td>
+						<td>MTT 1</td>
+						<td>NLHE</td>
+						<td>0 €</td>
+						<td>100 €</td>
+						<td>20</td>
+						<td>Open</td>
+					</tr>
+					<tr>
+						<td>12h30</td>
+						<td>MTT 1</td>
+						<td>NLHE</td>
+						<td>0 €</td>
+						<td>100 €</td>
+						<td>20</td>
+						<td>Open</td>
+					</tr>
+
+
+
+
+
+				</tbody>
+			</table>
+
+
+		</div>
+
+
+
+		
+		<div class="info-container col s2">
+			<div class="info">
+						
+				<ul class="tabs ">
+						<li class="tab col s7"><a class="active" href="#test1">Overview</a></li>
+						<li class="tab col s5"><a  href="#test2">Info</a></li>
+				</ul>
+					<div id="test1" class="col s12">
+						Overview <br>
+						<a class="waves-effect waves-light btn">S'inscrire</a>
+					</div>
+					<div id="test2" class="col s12">Info</div>
+
+			</div>
+
+
+
+
+
+		</div>
+
+
+
+
+
+	</div>
+
+
+	<!-- Load jquery -->
+	<script src="node_modules/jquery/dist/jquery.min.js"></script>
+	<script>
+		window.$ = window.jQuery = require('jquery')
+
+	</script>
+	<script src="node_modules/materialize-css/dist/js/materialize.min.js"></script>
+	<script src="node_modules/datatables/media/js/jquery.dataTables.js"></script>
+
+
+
+	<script>
+		$(document).ready(function () {
+			$('.tabs').tabs({
+				swipeable: true
+			});
+			$('table').dataTable();
+		});
+
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
 </html>

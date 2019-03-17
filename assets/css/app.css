@@ -1,0 +1,29 @@
+.servers tbody tr:hover{
+    background-color: rgb(66, 66, 66);
+    color:whitesmoke;
+}
+.servers{
+  
+    border: 10px solid dark;
+    height: 90vh;
+    background-color: whitesmoke;
+}
+
+body{
+    background-image: url("../../image/background.jpg");
+}
+
+
+
+
+.chat{
+    background-color: gray;
+  
+}
+.chat-container{
+    padding: 0px 10px 0px 10px;
+}
+
+.info .tabs .tab a{
+    font-size:1vw !important;
+}
