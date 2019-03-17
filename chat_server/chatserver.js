@@ -14,6 +14,11 @@ io.on('connection', function(socket){
   });
 });
 
+io.on('connect', function(socket){
+  io.emit('chat message', "[Server] : Connection established to chat and mauin server");
+ 
+});
+
 http.listen(port, function(){
   console.log('listening on *:' + port);
 });
