@@ -21,18 +21,34 @@
 	<div class="row">
 		<!-- Chat on the left -->
 		<div class="chat-container col s2">
-			
 			<div class="chat">
-
-
-				
 				<header>
 					Global Chat
 				</header>
-			</div>
+
+
+				<div class="chatmessages">
+					<ul id="messages">
+						[Server] : Bienvenue sur le chat
+						
+					</ul>
+				</div>
+
+				<form action="" method="post">
+
+						<div class="input-field col s12">
+								<input type="text" id="msgtextarea" class="materialize-textarea" data-length="140" required>
+								<label for="msgtextarea">Message</label>
+							  </div>
+					<button class="waves-effect waves-light btn">Send</button>
 			
 
 
+				</form>
+			</div>
+		
+		
+		
 		</div>
 		<div class="servers col s4 m8">
 
@@ -138,7 +154,9 @@
 	</script>
 	<script src="node_modules/materialize-css/dist/js/materialize.min.js"></script>
 	<script src="node_modules/datatables/media/js/jquery.dataTables.js"></script>
-
+	
+	<script src="node_modules/socket.io-client/dist/socket.io.js"></script>
+	<script src="assets/js/globalchat.js"></script>
 
 
 	<script>
@@ -146,6 +164,10 @@
 			$('.tabs').tabs({
 				swipeable: true
 			});
+			$('textarea#msgtextarea').characterCounter();
+
+
+
 			$('table').dataTable();
 		});
 

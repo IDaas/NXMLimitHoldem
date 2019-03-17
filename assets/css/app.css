@@ -18,7 +18,18 @@ body{
 
 .chat{
     background-color: gray;
+    padding: 10px;
+}
+.chat .chatmessages{
+    height: 60vh;
+    overflow: auto;
   
+}
+
+.chat textarea{
+    max-height: 15vh;
+    height:15vh;
+    overflow: auto;
 }
 .chat-container{
     padding: 0px 10px 0px 10px;
@@ -27,3 +38,35 @@ body{
 .info .tabs .tab a{
     font-size:1vw !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+/*Secollbarr*/
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #9b9b9b; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.658); 
+}
+
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #c62828; 
+}
+/*--Secollbarr*/
