@@ -6,7 +6,7 @@
 	<title>NIXMLimitHoldem</title>
 	<link rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.min.css">
 	<link rel="stylesheet" href="assets/css/app.css">
-	<link rel="stylesheet" href="node_modules/datatables/media/css/jquery.dataTables.min.css">
+
 
 </head>
 
@@ -57,23 +57,28 @@
 			<table>
 				<thead>
 					<tr>
-						<th>Start</th>
-						<th>Name</th>
-						<th>Game Mode</th>
-						<th>Buy-in</th>
-						<th>Dotation</th>
-						<th>Players</th>
-						<th>Status</th>
-					</tr>
+						<th v-for="column in tablefields"> <label>
+								<label>
+										<input name="group1" type="radio" v-model="picked" v-bind:value="column.field" />
+										<span>{{column.name}}</span>
+								</label>
+			
+							</tr>
+
+
+
+
 				</thead>
 
 				<tbody>
-					<tr v-for="server in servers">
+					<tr v-for="server in sortedServers" v-on:click="selectserver(server)">
+						
 						<td>{{server.Start}}</td>
 						<td>{{server.Name}}</td>
+						<td>{{server.Owner}}</td>
 						<td>{{server.GameMode}}</td>
-						<td>{{server.Price}}</td>
-						<td>{{server.Dotation}}</td>
+						<td>{{server.Price}}€</td>
+						<td>{{server.Dotation}}€</td>
 						<td>{{server.Players}}</td>
 						<td>{{server.Status}}</td>
 						
@@ -93,17 +98,29 @@
 
 		
 		<div class="info-container col s2">
-			<div class="info">
+			<div class="info grey lighten-3" v-if="selectedserver">
 						
 				<ul class="tabs ">
-						<li class="tab col s7"><a class="active" href="#test1">Overview</a></li>
-						<li class="tab col s5"><a  href="#test2">Info</a></li>
+					<li class="tab col s7"><a  	   href="#tab1">Overview</a></li>
+					<li class="tab col s5"><a  	   href="#tab2">Info</a></li>
 				</ul>
-					<div id="test1" class="col s12">
-						Overview <br>
-						<a class="waves-effect waves-light btn">S'inscrire</a>
+					
+					<div id="tab2" class="col s12">
+						<ul>
+								<li>{{selectedserver.Start}}</li>
+								<li>{{selectedserver.Name}}</li>
+								<li>{{selectedserver.Owner}}</li>
+								<li>{{selectedserver.GameMode}}</li>
+								<li>{{selectedserver.Price}}</li>
+								<li>{{selectedserver.Dotation}}</li>
+								<li>{{selectedserver.Players}}</li>
+								<li>{{selectedserver.Status}}</li>
+						</ul>
 					</div>
-					<div id="test2" class="col s12">Info</div>
+					<div id="tab1" class="col s12">
+							{{selectedserver.Name}}
+							<a class="waves-effect waves-light btn">S'inscrire</a>
+						</div>
 
 			</div>
 
@@ -128,23 +145,10 @@
 	</script>
 	<!-- Load meterialieze -->
 	<script src="node_modules/materialize-css/dist/js/materialize.min.js"></script>
-	<!-- load datatables  -->
-	<script src="node_modules/datatables/media/js/jquery.dataTables.js"></script>
+	
 	<!-- load socket.io -->
 	<script src="node_modules/socket.io-client/dist/socket.io.js"></script>
 
-	<script>
-		var table
-		$(document).ready(function () {
-			
-			$('.tabs').tabs({
-				swipeable: true
-			});
-			$('textarea#msgtextarea').characterCounter();
-		});
-
-	</script>
-	
 	<script src="assets/js/vue.js"></script>
 	<script src="assets/js/main.js"></script>
 

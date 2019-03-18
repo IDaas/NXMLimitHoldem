@@ -15,7 +15,7 @@ io.on('connection', function(socket){
 });
 
 io.on('connect', function(socket){
-  io.emit('chat message', "[Server] : Connection established to chat and mauin server");
+  io.emit('chat message', "[Server] : Connected to  server");
  
 });
 

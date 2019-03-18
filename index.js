@@ -19,7 +19,7 @@ function createMainWindow() {
 	const win = new electron.BrowserWindow({
 		width: 1000,
 		height: 750,
-		minWidth: 1000,
+		minWidth: 1250,
 		minHeight: 750
 		
 	});

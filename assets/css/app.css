@@ -45,6 +45,10 @@ body{
 .info .tabs .tab a{
     font-size:1vw !important;
 }
+.info{
+    height: auto;
+    
+}
 
 
 
@@ -74,6 +78,6 @@ body{
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-    background: #c62828; 
+    background:  rgb(0, 0, 0); 
 }
 /*--Secollbarr*/

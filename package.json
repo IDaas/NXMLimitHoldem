@@ -16,11 +16,14 @@
     "chat": "node chat_server/chatserver.js"
   },
   "dependencies": {
-    "electron": "^4.1.0",
+    
     "electron-debug": "^2.1.0",
     "express": "^4.16.4",
     "jquery": "^3.3.1",
     "materialize-css": "^1.0.0-rc.2",
     "socket.io": "^2.2.0"
+  },
+  "devDependencies": {
+    "electron": "^4.1.0"
   }
 }
