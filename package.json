@@ -13,7 +13,7 @@
   "scripts": {
     "test": "xo",
     "start": "electron .",
-    "chat": "node chat_server/chatserver.js"
+    "serve": "node MainServer/mainserver.js"
   },
   "dependencies": {
     
