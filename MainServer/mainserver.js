@@ -64,7 +64,7 @@ chatsocket.on("connect", function(socket) {
   chatsocket.emit("chat message", "[Server] : Connected to  server");
 });
 
-//Partie server
+//Partie mainserver to client
 var serversocket = io.of('/servers');
 
 
