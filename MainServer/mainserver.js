@@ -3,38 +3,7 @@ var http = require("http").Server(app);
 var io = require("socket.io")(http);
 var port = process.env.PORT || 3000;
 //list of servers
-var servers = [
-	{
-		Start: "10h30",
-		Name: "MTT 1",
-		Owner: "NIXML",
-		GameMode: "NLHE",
-		Price: "5",
-		Dotation: "2",
-		Players: "20",
-		Status: "Open"
-	},
-	{
-		Start: "11h30",
-		Name: "MTT 2",
-		Owner: "NIXML",
-		GameMode: "NLHE",
-		Price: "1",
-		Dotation: "4",
-		Players: "150",
-		Status: "Close"
-	},
-	{
-		Start: "09h30",
-		Name: "MTT 3",
-		Owner: "NIXML",
-		GameMode: "NLHE",
-		Price: "100",
-		Dotation: "50",
-		Players: "10",
-		Status: "Close"
-	}
-];
+var servers = []
 
 
 
@@ -93,14 +62,59 @@ serversSocket.on("connect", function(socket) {
 var servToServSocket = io.of('/server')
 
 servToServSocket.on("connection", function(socket) {
-	socket.on("info", function(msg) {
-		
-		console.log(msg);
+	
+	//on new server
+	socket.on("info", function(config) {
+		servers.push(
+		{
+			key:socket.id,
+			Start: config.Start,
+			Name: config.Name,
+			Owner: config.Token,
+			GameMode: config.GameMode,
+			Price: config.BuyIn,
+			Dotation: config.Dotation,
+			Players: config.MaxPlayers,
+			Status: config.Status
+		})
+		serversSocket.emit('serverupdate',servers)
+		console.log(servers);
 	});
+
+	
+
+	
+
+
+
+
+
+
+
 });
 //affiche quand un nouveau serveur se conecte au main server
 servToServSocket.on("connect", function(socket) {
   console.log("New game server found")
   //console.log(socket)
 });
+
+
+servToServSocket.on("disconnect",function(){
+	console.log("disconected")
+   for (let i = 0; i < servers.length; i++) {
+   	if(servers[i].key== socket.id){
+   		servers.splice(i,1)
+   		console.log("deleted server")
+   		break;
+   	}
+   	serversSocket.emit('serverupdate',servers)
+   }
+})
+
+
+
+var interval  = setInterval(() => {
+	console.log(serversSocket.server.clients())
+}, 5000);
+
 

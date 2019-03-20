@@ -12,8 +12,7 @@ var http = require("http").Server(app);  //serving http
 var port = config.port;
 var tomainserver = require("socket.io-client")(config.mainaddress+":"+config.mainport+'/server')
 tomainserver.emit('info',config)
-
-
+console.log("Socker : id " +tomainserver.id)
 
 
 

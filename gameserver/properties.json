@@ -6,7 +6,7 @@
     "BuyIn":2,
     "Dotation":2,
     "MaxPlayers":10,
-    "Statut":"Closed",
+    "Status":"Closed",
     "gameadress":"http://localhost",
     "gameport":633,
 

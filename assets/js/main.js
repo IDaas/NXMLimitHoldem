@@ -92,11 +92,11 @@
 			});
 			
 
-		var serversocket = io('http://localhost:3000/servers');
+var serversocket = io('http://localhost:3000/servers');
 
-			serversocket.on('serverupdate',function(serverlist){
-				app.servers = serverlist
-				console.log(serverlist)
-			})
+	serversocket.on('serverupdate',function(serverlist){
+		app.servers = serverlist
+		console.log(serverlist)
+	})
     
 
