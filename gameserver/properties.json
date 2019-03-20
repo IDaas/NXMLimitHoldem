@@ -1,0 +1,21 @@
+{
+    "Name":"Test server",
+    "Start":"16h00",
+    "Token":"jjhhgjjhgjjhgfgdf",
+    "GameMode":"NHLE",
+    "BuyIn":2,
+    "Dotation":2,
+    "MaxPlayers":10,
+    "Statut":"Closed",
+    "gameadress":"http://localhost",
+    "gameport":633,
+
+
+
+    "mainport":3000,
+    "mainaddress":"http://localhost"
+
+
+    
+
+}

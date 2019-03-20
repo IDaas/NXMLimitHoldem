@@ -2,7 +2,7 @@ var app = require("express")();
 var http = require("http").Server(app);
 var io = require("socket.io")(http);
 var port = process.env.PORT || 3000;
-
+//list of servers
 var servers = [
 	{
 		Start: "10h30",
@@ -49,9 +49,9 @@ app.get("/", function(req, res) {
 
 
 
-//partie chat
+//partie chat    Main server to client
 var chatsocket = io.of('/chat');
-//partie chat
+
 
 chatsocket.on("connection", function(socket) {
   socket.on("chat message", function(msg) {
@@ -64,18 +64,43 @@ chatsocket.on("connect", function(socket) {
   chatsocket.emit("chat message", "[Server] : Connected to  server");
 });
 
-//Partie mainserver to client
-var serversocket = io.of('/servers');
 
 
-serversocket.on("connection", function(socket) {
+
+//Partie mainserver to client   for the serverlist
+var serversSocket = io.of('/servers');
+
+
+serversSocket.on("connection", function(socket) {
 	socket.on("requestupdate", function(msg) {
-		serversocket.emit("requestupdate", msg);
+		serversSocket.emit("requestupdate", msg);
 		console.log(msg);
 	});
 });
 
-serversocket.on("connect", function(socket) {
-  serversocket.emit("serverupdate", servers);
+serversSocket.on("connect", function(socket) {
+  serversSocket.emit("serverupdate", servers);
   console.log("Client conected")
 });
+
+
+
+
+
+
+
+//partie mainserver to other server
+var servToServSocket = io.of('/server')
+
+servToServSocket.on("connection", function(socket) {
+	socket.on("info", function(msg) {
+		
+		console.log(msg);
+	});
+});
+//affiche quand un nouveau serveur se conecte au main server
+servToServSocket.on("connect", function(socket) {
+  console.log("New game server found")
+  //console.log(socket)
+});
+
