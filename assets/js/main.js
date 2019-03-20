@@ -80,7 +80,7 @@
 
 
   //handling messages
-  var chatsocket = io('http://10.167.129.134:3000/chat');
+  var chatsocket = io('http://localhost:3000/chat');
   
 		chatsocket.on('chat message', function(msg){
         app.messages.push(msg);
@@ -92,7 +92,7 @@
 			});
 			
 
-		var serversocket = io('http://10.167.129.134:3000/servers');
+		var serversocket = io('http://localhost:3000/servers');
 
 			serversocket.on('serverupdate',function(serverlist){
 				app.servers = serverlist

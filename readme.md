@@ -1,6 +1,6 @@
-# app [![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
+![Dependency shield]https://img.shields.io/david/dev/idaas/NXMLimitHoldem.svg
 
-> My superb app
+> NXMLimitHoldem
 
 
 ## Dev
@@ -10,10 +10,16 @@ $ npm install
 ```
 
 ### Run
-
 ```
 $ npm start
 ```
+
+
+### Run main server
+```
+$ npm run serve
+```
+
 
 ### Build
 
@@ -21,9 +27,9 @@ $ npm start
 $ npm run build
 ```
 
-Builds the app for macOS, Linux, and Windows, using [electron-packager](https://github.com/electron-userland/electron-packager).
+Builds the app for (macOS) lol, Linux, and Windows, using [electron-builder](https://github.com/electron-userland/electron-builder).
 
 
 ## License
 
-MIT © [<%= name %>](<%= website %>)
+MIT © 

@@ -13,10 +13,10 @@
   "scripts": {
     "test": "xo",
     "start": "electron .",
-    "serve": "node MainServer/mainserver.js"
+    "serve": "node MainServer/mainserver.js",
+    "build":"electron-builder -w"
   },
   "dependencies": {
-    
     "electron-debug": "^2.1.0",
     "express": "^4.16.4",
     "jquery": "^3.3.1",
