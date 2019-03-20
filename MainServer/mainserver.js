@@ -82,7 +82,18 @@ servToServSocket.on("connection", function(socket) {
 	});
 
 	
-
+	servToServSocket.on("disconnect",function(){
+		console.log("disconected")
+	   for (let i = 0; i < servers.length; i++) {
+		   if(servers[i].key== socket.id){
+			   servers.splice(i,1)
+			   console.log("deleted server")
+			   break;
+		   }
+		   serversSocket.emit('serverupdate',servers)
+	   }
+	})
+	
 	
 
 
@@ -99,17 +110,6 @@ servToServSocket.on("connect", function(socket) {
 });
 
 
-servToServSocket.on("disconnect",function(){
-	console.log("disconected")
-   for (let i = 0; i < servers.length; i++) {
-   	if(servers[i].key== socket.id){
-   		servers.splice(i,1)
-   		console.log("deleted server")
-   		break;
-   	}
-   	serversSocket.emit('serverupdate',servers)
-   }
-})
 
 
 
