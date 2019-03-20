@@ -21,37 +21,7 @@
 				picked:'Start',
 				selectedserver:'',
 
-    		servers: [{
-    				Start: "10h30",
-						Name: "MTT 1",
-						Owner:'NIXML',
-    				GameMode: "NLHE",
-    				Price: "5",
-    				Dotation: "2",
-    				Players: "20",
-    				Status: "Open"
-					},
-					{
-    				Start: "11h30",
-						Name: "MTT 2",
-						Owner:'NIXML',
-    				GameMode: "NLHE",
-    				Price: "1",
-    				Dotation: "4",
-    				Players: "150",
-    				Status: "Close"
-					},
-					{
-    				Start: "09h30",
-						Name: "MTT 3",
-						Owner:'NIXML',
-    				GameMode: "NLHE",
-    				Price: "100",
-    				Dotation: "50",
-    				Players: "10",
-    				Status: "Close"
-					}
-    		]
+    		servers: []
 			},
 			methods:{
 				dynamicSort: function (property) {
@@ -72,7 +42,7 @@
 				},
 				sendmessage:function(){
 					if(this.message !=''){
-						socket.emit('chat message', app.user+": "+this.message);
+						chatsocket.emit('chat message', app.user+": "+this.message);
 						this.message=''
 					}
 				},
@@ -110,14 +80,23 @@
 
 
   //handling messages
-  var socket = io('http://10.167.129.134:3000');
+  var chatsocket = io('http://10.167.129.134:3000/chat');
   
-      socket.on('chat message', function(msg){
+		chatsocket.on('chat message', function(msg){
         app.messages.push(msg);
         if(app.messages.length > 40){
             app.messages.shift()
-        }
+				}
+				console.log(msg)
         $('.chatmessages').scrollTop($('.chatmessages').get(0).scrollHeight);
-      });
+			});
+			
+
+		var serversocket = io('http://10.167.129.134:3000/servers');
+
+			serversocket.on('serverupdate',function(serverlist){
+				app.servers = serverlist
+				console.log(serverlist)
+			})
     
 
