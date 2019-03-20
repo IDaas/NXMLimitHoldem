@@ -34,13 +34,13 @@
 					</ul>
 				</div>
 
-				<form action="" method="post">
+				
 
 						<div class="input-field col s12">
-								<input type="text" id="msgtextarea" class="materialize-textarea" data-length="140" required>
+								<input type="text" id="msgtextarea" class="materialize-textarea" data-length="140" v-model="message" v-on:keyup.enter="sendmessage()">
 								<label for="msgtextarea">Message</label>
 							  </div>
-					<button class="waves-effect waves-light btn">Send</button>
+					<button class="waves-effect waves-light btn" v-on:click="sendmessage()">Send</button>
 			
 
 

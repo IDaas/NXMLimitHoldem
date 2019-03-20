@@ -7,6 +7,7 @@
     	data: {
 				user:"NIXML",
 				messages: [],
+				message:'',
 				tablefields: [
 					{name: "Start",field: "Start",},
 					{name: "Name",field: "Name",},
@@ -68,7 +69,13 @@
 				selectserver:function(server){
 					this.selectedserver=server;
 					
-				}
+				},
+				sendmessage:function(){
+					if(this.message !=''){
+						socket.emit('chat message', app.user+": "+this.message);
+						this.message=''
+					}
+				},
 
 
 
@@ -83,10 +90,6 @@
 
 
 			},
-
-
-
-
 
     	created: function () {
 				
@@ -108,23 +111,13 @@
 
   //handling messages
   var socket = io('http://10.167.129.134:3000');
-  $(function () {
-      $('form').submit(function(e){
-        e.preventDefault(); // prevents page reloading
-        socket.emit('chat message', app.user+": "+$('#msgtextarea').val());
-        $('#msgtextarea').val('');
-        return false;
-      });
+  
       socket.on('chat message', function(msg){
         app.messages.push(msg);
         if(app.messages.length > 40){
             app.messages.shift()
         }
-        
-
         $('.chatmessages').scrollTop($('.chatmessages').get(0).scrollHeight);
-        //$('.chatmessages').scrollTop = $('.chatmessages').scrollHeight;
       });
-    });
-
+    
 
