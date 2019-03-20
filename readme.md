@@ -1,4 +1,3 @@
-[![Dependency shield]]https://img.shields.io/david/dev/idaas/NXMLimitHoldem.svg
 
 > NXMLimitHoldem
 
