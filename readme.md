@@ -1,7 +1,7 @@
 ![Dependency shield]https://img.shields.io/david/dev/idaas/NXMLimitHoldem.svg
 
 > NXMLimitHoldem
-
+[![forthebadge](https://forthebadge.com/images/badges/oooo-kill-em.svg)](https://forthebadge.com)
 
 ## Dev
 
