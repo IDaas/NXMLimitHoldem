@@ -22,7 +22,8 @@ function createMainWindow() {
 		height: 750,
 		minWidth: 1250,
 		minHeight: 750,
-		icon:path.join(__dirname,'/image/NIXML.ico')
+		icon:path.join(__dirname,'/image/NIXML.ico'),
+		frame: false
 	});
 
 	

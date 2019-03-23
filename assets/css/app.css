@@ -1,4 +1,10 @@
 
+
+ /*Blue  :  #61A39F */
+        /*Pink  :  #930D8F */
+        /*black 15170D*/
+
+
 /*Header */
 header{
     padding-left: 5px;
@@ -9,6 +15,18 @@ header img{
     height: auto;
 }
 
+
+/*Navbar  aka control border*/
+.nav-wrapper{
+    background-color: #930D8F !important;
+}
+
+nav {
+    -webkit-app-region: drag;
+  }
+  nav ul li>a {
+    -webkit-app-region: no-drag;
+  }
 
 
 
@@ -70,9 +88,7 @@ body{
             height: auto;
             
         }
-        /*Blue  :  #61A39F */
-        /*Pink  :  #930D8F */
-        /*black 15170D*/
+       
         .tabs .tab a{
             color:#000;
         } /*Black color to the text*/
