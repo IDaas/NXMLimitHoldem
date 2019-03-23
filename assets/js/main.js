@@ -69,11 +69,9 @@
 						swipeable: true});
 					//D'claration du bouton de click pour join la game
 					var playBtn = $("#js-play")
+					playBtn.off()//supression des listeners
 					playBtn.click((e)=>{
-						console.log("Play Clicked")
-						//alert(JSON.stringify(app.selectedserver))
-						//window.open('game.html', '_blank', 'nodeIntegration=yes')
-						ipc.send('new-game',app.selectedserver)	
+						ipc.send('new-game',app.selectedserver)	//envoie de la config du serveur au process principal
 					})
 						
         },
@@ -103,8 +101,11 @@ var serversocket = io('http://localhost:3000/servers');
 
 	serversocket.on('serverupdate',function(serverlist){
 		app.servers = serverlist
-		//console.log(serverlist)
+
 	})
-    const ipc = require('electron').ipcRenderer;
+
+
+//reqiore ipc to send messagee to main engine to greate a new game
+const ipc = require('electron').ipcRenderer;
 	
 	

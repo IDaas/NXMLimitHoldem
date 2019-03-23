@@ -53,25 +53,28 @@ app.on('ready', () => {
 });
 
 
-var gamewindow = null;
-
-app.on('ready',()=>{
-
-
-	 gamewindow = new electron.BrowserWindow({
-		width:300,
-		height:300,
-		show:false
-	})
-
-})
 
 
 
+var games = [];
+
+
+
+//on require icp main pour recevori la communication du renderer
 var ipc = require('electron').ipcMain;
+ipc.on('new-game',(event,data)=>{//on new game request
+	var gamewindow = new electron.BrowserWindow({
+		width:800,
+		height:600,
+		minWidth:400,
+		minHeight:300,
+		title:data.Name
+
+	})
+	gamewindow.loadURL(`file://${__dirname}/game/game.html`);
+	 games.push(gamewindow);
+	console.log(games.length)
+	console.log(data)
 
 
-ipc.on('new-game',()=>{
-	console.log('salut')
-	gamewindow.show()
 })
