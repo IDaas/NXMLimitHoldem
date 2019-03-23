@@ -1,26 +1,19 @@
 
 
  /*Blue  :  #61A39F */
-        /*Pink  :  #930D8F */
-        /*black 15170D*/
+/*Pink  :  #930D8F */
+/*black : #15170D*/
 
 
-/*Header */
-header{
-    padding-left: 5px;
-    color: aliceblue;
-}
-header img{
-    width: 7vw;
-    height: auto;
-}
 
 
 /*Navbar  aka control border*/
 .nav-wrapper{
-    background-color: #930D8F !important;
+    /* background-color: #15170D !important; */
+    background-image: url('../../image/navbar.png');
+    background-size:cover; 
 }
-
+/*For dragging the app*/
 nav {
     -webkit-app-region: drag;
   }
@@ -29,8 +22,15 @@ nav {
   }
 
 
+  nav img {
+    
+    height:60px;
+    width: auto;
+  }
 
-
+  #app{
+      padding-top: 20px;
+  }
 
 
 
@@ -44,8 +44,8 @@ nav {
 .servers{
   
     border: 10px solid dark;
-    height: 90vh;
-    max-height: 90vh;
+    height: 80vh;
+    max-height: 80vh;
     overflow: auto;
     background-color: whitesmoke;
 }
@@ -66,6 +66,8 @@ body{
 .chat{
     background-color: rgb(255, 255, 255);
     padding: 10px;
+    height: 80vh;
+    max-height: 80vh;
 }
 .chat .chatmessages{
     height: 60vh;

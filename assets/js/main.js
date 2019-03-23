@@ -12,7 +12,8 @@ $('#maximize').click(() => {
   }
 })
 $('#close').click(() => elWindow.close())
-	
+/*End window control*/
+
 	
 	
 	
@@ -93,7 +94,9 @@ $('#close').click(() => elWindow.close())
 						ipc.send('new-game',app.selectedserver)	//envoie de la config du serveur au process principal
 					})
 						
-        },
+		},
+		
+	
     })
 
 
