@@ -66,9 +66,16 @@
         },
         updated:function() {
 					$('.tabs').tabs({
-						swipeable: true,
+						swipeable: true});
+					//D'claration du bouton de click pour join la game
+					var playBtn = $("#js-play")
+					playBtn.click((e)=>{
+						console.log("Play Clicked")
+						//alert(JSON.stringify(app.selectedserver))
+						//window.open('game.html', '_blank', 'nodeIntegration=yes')
+						ipc.send('new-game',app.selectedserver)	
+					})
 						
-					});
         },
     })
 
@@ -83,20 +90,21 @@
   var chatsocket = io('http://localhost:3000/chat');
   
 		chatsocket.on('chat message', function(msg){
-        app.messages.push(msg);
-        if(app.messages.length > 40){
-            app.messages.shift()
-				}
-				console.log(msg)
-        $('.chatmessages').scrollTop($('.chatmessages').get(0).scrollHeight);
-			});
+			app.messages.push(msg);
+			if(app.messages.length > 40){
+				app.messages.shift()
+					}
+					console.log(msg)
+			$('.chatmessages').scrollTop($('.chatmessages').get(0).scrollHeight);
+		});
 			
-
+//Server list update
 var serversocket = io('http://localhost:3000/servers');
 
 	serversocket.on('serverupdate',function(serverlist){
 		app.servers = serverlist
-		console.log(serverlist)
+		//console.log(serverlist)
 	})
-    
-
+    const ipc = require('electron').ipcRenderer;
+	
+	

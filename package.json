@@ -10,11 +10,13 @@
     "email": "arthur.michel1@viacesi.fr",
     "url": ""
   },
+  "main":"app.js",
   "scripts": {
     "test": "xo",
     "start": "electron .",
     "serve": "node MainServer/mainserver.js",
-    "build":"electron-builder -w"
+    "gameserver": "node gameserver/server.js",
+    "build": "electron-builder -w"
   },
   "dependencies": {
     "electron-debug": "^2.1.0",

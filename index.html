@@ -107,19 +107,19 @@
 					
 					<div id="tab2" class="col s12">
 						<ul>
-								<li>{{selectedserver.Start}}</li>
-								<li>{{selectedserver.Name}}</li>
-								<li>{{selectedserver.Owner}}</li>
-								<li>{{selectedserver.GameMode}}</li>
-								<li>{{selectedserver.Price}}</li>
-								<li>{{selectedserver.Dotation}}</li>
-								<li>{{selectedserver.Players}}</li>
-								<li>{{selectedserver.Status}}</li>
+								<li>Heure de début : {{selectedserver.Start}}</li>
+								<li>Nom du serveur : {{selectedserver.Name}}</li>
+								<li>Propriétaire   :{{selectedserver.Owner}}</li>
+								<li>Mode de jeu    :{{selectedserver.GameMode}}</li>
+								<li>Buy-in         :{{selectedserver.Price}}</li>
+								<li>Dotation       :{{selectedserver.Dotation}}</li>
+								<li>Joueurs        :{{selectedserver.Players}}</li>
+								<li>Statut         :{{selectedserver.Status}}</li>
 						</ul>
 					</div>
 					<div id="tab1" class="col s12">
 							{{selectedserver.Name}}
-							<a class="waves-effect waves-light btn">S'inscrire</a>
+							<button class="waves-effect waves-light btn" id="js-play">S'inscrire</button>
 						</div>
 
 			</div>
