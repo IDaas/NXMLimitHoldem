@@ -91,7 +91,7 @@
 				</thead>
 
 				<tbody>
-					<tr v-for="server in sortedServers" v-on:click="selectserver(server)">
+					<tr v-for="server in sortedServers" v-on:click="selectserver(server)" v-bind:class="{selectedserver : isSelected(server)}">
 						
 						<td>{{server.Start}}</td>
 						<td>{{server.Name}}</td>

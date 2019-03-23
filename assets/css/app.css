@@ -38,7 +38,7 @@ nav {
 
 
 .servers tbody tr:hover{
-    background-color: rgb(66, 66, 66);
+    background-color: rgba(97, 163, 159, 0.507);;
     color:whitesmoke;
 }
 .servers{
@@ -55,9 +55,20 @@ nav {
     overflow:scroll;
 }
 
+
+
+
+
 body{
    
     background-color: #15170D;
+}
+
+.selectedserver{
+    
+    
+    background: linear-gradient(135deg, #ca96f4 0%,#9b35ef 16%,#7902d4 51%,#ba00e8 75%,#6700b6 100%);
+    color: #15170D;
 }
 
 

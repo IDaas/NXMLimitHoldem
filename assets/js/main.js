@@ -66,6 +66,9 @@ $('#close').click(() => elWindow.close())
 						this.message=''
 					}
 				},
+				isSelected:function(server){
+					return server == app.selectedserver;
+				}
 
 
 
@@ -75,7 +78,8 @@ $('#close').click(() => elWindow.close())
 			computed:{
 				sortedServers :function(){
 					return this.servers.sort(this.dynamicSort(this.picked));
-				}
+				},
+				
 
 
 
