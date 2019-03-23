@@ -1,3 +1,24 @@
+
+/*Header */
+header{
+    padding-left: 5px;
+    color: aliceblue;
+}
+header img{
+    width: 7vw;
+    height: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
 .servers tbody tr:hover{
     background-color: rgb(66, 66, 66);
     color:whitesmoke;
@@ -17,14 +38,15 @@
 }
 
 body{
-    background-image: url("../../image/background.jpg");
+   
+    background-color: #15170D;
 }
 
 
 
 
 .chat{
-    background-color: gray;
+    background-color: rgb(255, 255, 255);
     padding: 10px;
 }
 .chat .chatmessages{
@@ -33,22 +55,48 @@ body{
   
 }
 
-.chat textarea{
-    max-height: 15vh;
-    height:15vh;
-    overflow: auto;
-}
+
 .chat-container{
     padding: 0px 10px 0px 10px;
 }
 
-.info .tabs .tab a{
-    font-size:1vw !important;
-}
-.info{
-    height: auto;
-    
-}
+
+
+/*Info --*/
+        .info .tabs .tab a{
+            font-size:1vw !important;
+        }
+        .info{
+            height: auto;
+            
+        }
+        /*Blue  :  #61A39F */
+        /*Pink  :  #930D8F */
+        /*black 15170D*/
+        .tabs .tab a{
+            color:#000;
+        } /*Black color to the text*/
+
+        .tabs .tab a:hover {
+            background-color:#eee;
+            color:#61A39F;
+        } /*Text color on hover*/
+
+        .tabs .tab a.active {
+            background-color:#61A39F;
+            color:#000;
+        } /*Background and text color when a tab is active*/
+
+        .tabs .indicator {
+            background-color:#930D8F;
+        } /*Color of underline*/
+
+        .tab{
+            padding-top: 15px;
+        }
+
+
+/*--Info*/
 
 
 

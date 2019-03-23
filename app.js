@@ -1,5 +1,6 @@
 'use strict';
 const electron = require('electron');
+var path = require('path');
 
 const app = electron.app;
 
@@ -21,9 +22,7 @@ function createMainWindow() {
 		height: 750,
 		minWidth: 1250,
 		minHeight: 750,
-		webPreferences: {
-			nativeWindowOpen: true
-		  }
+		icon:path.join(__dirname,'/image/NIXML.ico')
 	});
 
 	
@@ -68,7 +67,8 @@ ipc.on('new-game',(event,data)=>{//on new game request
 		height:600,
 		minWidth:400,
 		minHeight:300,
-		title:data.Name
+		title:data.Name,
+		
 
 	})
 	gamewindow.loadURL(`file://${__dirname}/game/game.html`);
