@@ -63,6 +63,22 @@ var games = [];
 //on require icp main pour recevori la communication du renderer
 var ipc = require('electron').ipcMain;
 ipc.on('new-game',(event,data)=>{//on new game request
+	
+	//prevent to open multiple windows
+	for (let i = 0; i < games.length; i++) {
+		const game = games[i];
+		
+		if (game.key==data.key) {
+			return
+		}
+
+	}
+	
+	
+	
+	
+	
+	
 	var gamewindow = new electron.BrowserWindow({
 		width:800,
 		height:600,
@@ -73,9 +89,22 @@ ipc.on('new-game',(event,data)=>{//on new game request
 
 	})
 	gamewindow.loadURL(`file://${__dirname}/game/game.html`);
-	 games.push(gamewindow);
-	console.log(games.length)
-	console.log(data)
+	
+	//for keeping aspect ratio
+	gamewindow.on('resize', ()=> {
+		setTimeout(()=>{
+		  var size = gamewindow.getSize();
+		  gamewindow.setSize(size[0], parseInt(size[0] * 9 / 16));
+		}, 0);
+	  });
+	gamewindow.on('close',()=>{
+		games = games.filter(game=> game.key!=data.key)
+	})
+
+
+	games.push(Object.assign(gamewindow,data));
+	console.log("nombres de parties :"+ games.length)
+	
 
 
 })
