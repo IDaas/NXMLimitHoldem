@@ -29,3 +29,28 @@
   button{
     background-color: #930D8F !important;
   }
+
+
+  
+
+/*Navbar  aka control border*/
+.nav-wrapper{
+  /* background-color: #15170D !important; */
+  background-image: url('../../image/navbar.png');
+  background-size:cover; 
+  background-position: center;
+}
+/*For dragging the app*/
+nav {
+  -webkit-app-region: drag;
+}
+nav ul li>a {
+  -webkit-app-region: no-drag;
+}
+
+
+nav img {
+  
+  height:60px;
+  width: auto;
+}

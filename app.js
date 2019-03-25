@@ -137,8 +137,8 @@ function createLoginWindow(parent){
 		minWidth:400,
 		maxWidth:400,
 		maxHeight:800,
-		minHeight:800, 
-		frame: true 
+		minHeight:800,
+		frame:false
 	})
 	win.loadURL(`file://${__dirname}/src/login.html`);
 	win.on('closed', onClosed);
