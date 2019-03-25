@@ -81,7 +81,8 @@ body{
     max-height: 80vh;
 }
 .chat .chatmessages{
-    height: 60vh;
+    height: 50vh;
+    max-heigth:100%;
     overflow: auto;
   
 }

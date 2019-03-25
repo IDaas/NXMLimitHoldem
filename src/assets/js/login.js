@@ -14,9 +14,20 @@ btn.click((e)=>{
         password : $('#password').val()
 
     }
-    console.log("loged")
+    
     ipc.send('login',data)	//envoie les identifiants
 })
+
+
+
+ipc.on('loginerror',(event,data)=>{
+  M.toast({ html:"Mauvais identifiants" , classes:" red darken-2"})
+  console.log('error')
+
+})
+
+
+
 
 /*Window control*/ 
 const remote = require('electron').remote
@@ -30,4 +41,6 @@ $('#maximize').click(() => {
   }
 })
 $('#close').click(() => elWindow.close())
-/*End window control*/
+
+
+

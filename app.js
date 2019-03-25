@@ -4,6 +4,7 @@ var path = require('path');
 
 const app = electron.app;
 
+
 // Adds debug features like hotkeys for triggering dev tools and reload
 require('electron-debug')();
 
@@ -16,7 +17,7 @@ function onClosed() {//free windows
 	loginWindow = null;
 	
 }
-
+//function to greate mainwindow
 function createMainWindow() {
 	const win = new electron.BrowserWindow({
 		width: 1000,
@@ -33,7 +34,7 @@ function createMainWindow() {
 
 	return win;
 }
-
+//create main window function
 function createLoginWindow(parent){
 	const win = new electron.BrowserWindow({ 
 		parent: parent, 
@@ -43,7 +44,8 @@ function createLoginWindow(parent){
 		maxWidth:400,
 		maxHeight:800,
 		minHeight:800,
-		frame:false
+		frame:false,
+		name:'login'
 	})
 	win.loadURL(`file://${__dirname}/src/login.html`);
 	win.on('closed', onClosed);
@@ -63,7 +65,7 @@ app.on('activate', () => {
 		mainWindow = createMainWindow();
 	}
 });
-// init window
+// init windows
 app.on('ready', () => {
 	mainWindow = createMainWindow();
 	loginWindow = createLoginWindow(mainWindow);
@@ -77,7 +79,7 @@ app.on('ready', () => {
 
 
 
-
+//current player games lists
 var games = [];
 
 
@@ -95,9 +97,7 @@ ipc.on('new-game',(event,data)=>{//on new game request
 		}
 
 	}
-	
-
-	
+	//create a new game window  set name and marent
 	var gamewindow = new electron.BrowserWindow({
 		width:800,
 		height:600,
@@ -116,11 +116,13 @@ ipc.on('new-game',(event,data)=>{//on new game request
 		  gamewindow.setSize(size[0], parseInt(size[0] * 9 / 16));
 		}, 0);
 	  });
+
+	//remove games from player game list  
 	gamewindow.on('close',()=>{
 		games = games.filter(game=> game.key!=data.key)
 	})
 
-
+	//add game agame with gamewindow and server data
 	games.push(Object.assign(gamewindow,data));
 	console.log("nombres de parties :"+ games.length)
 	
@@ -129,45 +131,28 @@ ipc.on('new-game',(event,data)=>{//on new game request
 })
 
 // login part
-ipc.on('login',(event,data)=>{
-		console.log(data)
-		//call function checkConnection with callback
-		checkConnection(data.username,data.password,(response)=>{
-			if(response){		
-				mainWindow.show()
-				loginWindow.hide()
-			}
-		})
 
+
+
+var loginsocket = require("socket.io-client")('http://localhost:3000/login');
+//recieve a message from login renderer
+ipc.on('login',(event,data)=>{
+	//send it to mainserver
+	loginsocket.emit('login',data);
 })
 
-//conection to database
-const mysql = require('mysql')
-const dbconfig = require("./database/dbconfig")
-//call dbconfig
-const db = mysql.createConnection(dbconfig)
-db.connect((err) => {
-    if (err) {
-        throw err;
-    }
-    console.log('Connected to database');
-});
 
-//Pseudo true or false asnc way to fix this shit
-function checkConnection(username,password,callback){
-	let sql = `SELECT count(*) as count from users where username= "${username}" AND password = md5(${password})`
-	db.query(sql,(err,result)=>{
-		if (err) {
-			console.log(err)
-		}
-		callback(result[0].count >= 1? true:false)
-	})
-
-
-
-}
-
-
+//réponse du serveur pour la connection login mot de passe
+loginsocket.on("login",(accept)=>{
+	if(accept){  // if authorized
+		mainWindow.show()
+		loginWindow.hide()
+	}else{ //send login event
+		loginWindow.webContents.send("loginerror","")
+		
+		
+	}
+})
 
 
 
