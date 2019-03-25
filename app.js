@@ -9,11 +9,12 @@ require('electron-debug')();
 
 // Prevent window being garbage collected
 let mainWindow;
+let loginWindow;
 
-function onClosed() {
-	// Dereference the window
-	// For multiple windows store them in an array
+function onClosed() {//free windows
 	mainWindow = null;
+	loginWindow = null;
+	
 }
 
 function createMainWindow() {
@@ -23,10 +24,10 @@ function createMainWindow() {
 		minWidth: 1250,
 		minHeight: 750,
 		icon:path.join(__dirname,'/image/NIXML.ico'),
-		frame: false
+		show: false,
+		frame:false
+		
 	});
-
-	
 	win.loadURL(`file://${__dirname}/src/index.html`);
 	win.on('closed', onClosed);
 
@@ -47,9 +48,15 @@ app.on('activate', () => {
 		mainWindow = createMainWindow();
 	}
 });
-
+// init window
 app.on('ready', () => {
 	mainWindow = createMainWindow();
+	loginWindow = createLoginWindow(mainWindow);
+
+	loginWindow.on('close',()=>{
+		app.quit()
+	})
+
 });
 
 
@@ -74,10 +81,7 @@ ipc.on('new-game',(event,data)=>{//on new game request
 
 	}
 	
-	
-	
-	
-	
+
 	
 	var gamewindow = new electron.BrowserWindow({
 		width:800,
@@ -108,3 +112,38 @@ ipc.on('new-game',(event,data)=>{//on new game request
 
 
 })
+
+
+ipc.on('login',(event,data)=>{
+	console.log(data)
+	if(data.username=="NIXML" && data.password==1234){
+
+
+		mainWindow.show()
+		loginWindow.hide()
+	}
+
+})
+
+
+
+
+
+function createLoginWindow(parent){
+	const win = new electron.BrowserWindow({ 
+		parent: parent, 
+		width: 400, 
+		height: 800,
+		minWidth:400,
+		maxWidth:400,
+		maxHeight:800,
+		minHeight:800, 
+		frame: true 
+	})
+	win.loadURL(`file://${__dirname}/src/login.html`);
+	win.on('closed', onClosed);
+	
+	return win;
+}
+
+
