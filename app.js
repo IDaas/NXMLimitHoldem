@@ -34,7 +34,22 @@ function createMainWindow() {
 	return win;
 }
 
-
+function createLoginWindow(parent){
+	const win = new electron.BrowserWindow({ 
+		parent: parent, 
+		width: 400, 
+		height: 800,
+		minWidth:400,
+		maxWidth:400,
+		maxHeight:800,
+		minHeight:800,
+		frame:false
+	})
+	win.loadURL(`file://${__dirname}/src/login.html`);
+	win.on('closed', onClosed);
+	
+	return win;
+}
 
 
 app.on('window-all-closed', () => {
@@ -89,9 +104,9 @@ ipc.on('new-game',(event,data)=>{//on new game request
 		minWidth:400,
 		minHeight:300,
 		title:data.Name,
-		
-
 	})
+
+
 	gamewindow.loadURL(`file://${__dirname}/game/game.html`);
 	
 	//for keeping aspect ratio
@@ -113,37 +128,48 @@ ipc.on('new-game',(event,data)=>{//on new game request
 
 })
 
-
+// login part
 ipc.on('login',(event,data)=>{
-	console.log(data)
-	if(data.username=="NIXML" && data.password==1234){
-
-
-		mainWindow.show()
-		loginWindow.hide()
-	}
+		console.log(data)
+		//call function checkConnection with callback
+		checkConnection(data.username,data.password,(response)=>{
+			if(response){		
+				mainWindow.show()
+				loginWindow.hide()
+			}
+		})
 
 })
 
+//conection to database
+const mysql = require('mysql')
+const dbconfig = require("./database/dbconfig")
+//call dbconfig
+const db = mysql.createConnection(dbconfig)
+db.connect((err) => {
+    if (err) {
+        throw err;
+    }
+    console.log('Connected to database');
+});
 
-
-
-
-function createLoginWindow(parent){
-	const win = new electron.BrowserWindow({ 
-		parent: parent, 
-		width: 400, 
-		height: 800,
-		minWidth:400,
-		maxWidth:400,
-		maxHeight:800,
-		minHeight:800,
-		frame:false
+//Pseudo true or false asnc way to fix this shit
+function checkConnection(username,password,callback){
+	let sql = `SELECT count(*) as count from users where username= "${username}" AND password = md5(${password})`
+	db.query(sql,(err,result)=>{
+		if (err) {
+			console.log(err)
+		}
+		callback(result[0].count >= 1? true:false)
 	})
-	win.loadURL(`file://${__dirname}/src/login.html`);
-	win.on('closed', onClosed);
-	
-	return win;
+
+
+
 }
+
+
+
+
+
 
 
