@@ -1,0 +1,161 @@
+
+
+ /*Blue  :  #61A39F */
+/*Pink  :  #930D8F */
+/*black : #15170D*/
+
+
+
+
+/*Navbar  aka control border*/
+.nav-wrapper{
+    /* background-color: #15170D !important; */
+    background-image: url('../../image/navbar.png');
+    background-size:cover; 
+}
+/*For dragging the app*/
+nav {
+    -webkit-app-region: drag;
+  }
+  nav ul li>a {
+    -webkit-app-region: no-drag;
+  }
+
+
+  nav img {
+    
+    height:60px;
+    width: auto;
+  }
+
+  #app{
+      padding-top: 20px;
+  }
+
+
+
+
+
+
+.servers tbody tr:hover{
+    background-color: rgba(97, 163, 159, 0.507);;
+    color:whitesmoke;
+}
+.servers{
+  
+    border: 10px solid dark;
+    height: 80vh;
+    max-height: 80vh;
+    overflow: auto;
+    background-color: whitesmoke;
+}
+
+.servers table tbody{
+    max-height: 50vh;
+    overflow:scroll;
+}
+
+
+
+
+
+body{
+   
+    background-color: #15170D;
+}
+
+.selectedserver{
+    
+    
+    background: linear-gradient(135deg, #ca96f4 0%,#9b35ef 16%,#7902d4 51%,#ba00e8 75%,#6700b6 100%);
+    color: #15170D;
+}
+
+
+
+
+.chat{
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+    height: 80vh;
+    max-height: 80vh;
+}
+.chat .chatmessages{
+    height: 50vh;
+    max-heigth:100%;
+    overflow: auto;
+  
+}
+
+
+.chat-container{
+    padding: 0px 10px 0px 10px;
+}
+
+
+
+/*Info --*/
+        .info .tabs .tab a{
+            font-size:1vw !important;
+        }
+        .info{
+            height: auto;
+            
+        }
+       
+        .tabs .tab a{
+            color:#000;
+        } /*Black color to the text*/
+
+        .tabs .tab a:hover {
+            background-color:#eee;
+            color:#61A39F;
+        } /*Text color on hover*/
+
+        .tabs .tab a.active {
+            background-color:#61A39F;
+            color:#000;
+        } /*Background and text color when a tab is active*/
+
+        .tabs .indicator {
+            background-color:#930D8F;
+        } /*Color of underline*/
+
+        .tab{
+            padding-top: 15px;
+        }
+
+
+/*--Info*/
+
+
+
+
+
+
+
+
+
+
+
+/*Secollbarr*/
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #9b9b9b; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.658); 
+}
+
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background:  rgb(0, 0, 0); 
+}
+/*--Secollbarr*/

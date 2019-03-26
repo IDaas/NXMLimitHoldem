@@ -1,0 +1,23 @@
+{
+  "name": "poker-io-server",
+  "productName": "NXMLimitHoldem",
+  "version": "1.0.0",
+  "description": "Electron poker app",
+  "license": "MIT",
+  "repository": "https://github.com/IDaas/NXMLimitHoldem",
+  "author": {
+    "name": "IDaas",
+    "email": "arthur.michel1@viacesi.fr",
+    "url": ""
+  },
+  "main": "app.js",
+  "scripts": {
+    "test": "xo",
+    "start": "node mainserver.js ."
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "mysql": "^2.16.0",
+    "socket.io": "^2.2.0"
+  }
+}
